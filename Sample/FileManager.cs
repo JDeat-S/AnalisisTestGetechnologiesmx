@@ -10,7 +10,7 @@ namespace AnalisisTest.Sample
 
     public class FileManager
     {
-        private static readonly ILog Log;
+        private static readonly ILog Log = log4net.LogManager.GetLogger(typeof(FileManager));
         #region Constants
         private const string UpdatePackageFileNameFormat = "{0}.zip";
 
@@ -18,21 +18,12 @@ namespace AnalisisTest.Sample
 
 
         #region Methods
-
-
-
-
-        
-
-        
         public string UpdateFiles(string sourceFolder, string targetFolder, string backupDir = null)
         {
             var fileUpdater = new FileUpdater();
-            
             return fileUpdater.UpdateFiles(sourceFolder, targetFolder, backupDir);
         }
 
-      
         public string RemoveDirectoryContents(string directory, string directoryToFilter = "", bool remove = false)
         {
             var directoryInfo = new DirectoryInfo(directory);
@@ -90,7 +81,7 @@ namespace AnalisisTest.Sample
 
             return string.Empty;
         }
-
-        #endregion Methods
     }
+
+    #endregion Methods
 }
